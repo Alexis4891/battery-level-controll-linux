@@ -1,6 +1,6 @@
 # Battery Level Control - Linux
 
-Having migrated on a Linux based Operating System i found out that there was no official application that could set my laptop's battery level. Therefore, i wrote this script to setup a battery level service.
+Having migrated on a Linux based Operating System i found out that there was no official application that could set my laptop's battery level. Therefore, i wrote this script to setup a battery level threshold service.
 __Disclamer__:
 Check that your laptop's battery controller can actually handle different battery levels. This script does not guarantee that a battery level can be set.
 
@@ -41,7 +41,15 @@ For the maximum battery lifespan, __Battery Level 60%__ (Recommended when power 
 sudo python3 main.py -b 60
 ```
 
-You can also check that the script and therefore battery level is set correctly on your laptop. For example, setting the battery level to 60% 
+You can also check that the script and therefore battery level is set correctly on your laptop. For example the current battery level is at 65% and we set the battery level to 60%. Now we check if its charging (it shouldn't..) with the following command:
+
+```sh
+cat /sys/class/power_supply/BAT0/status
+```
+
+If the battery charge stop threshold is working, the command should show:
+`Not Charging`
+
 
 ## _Notes_
 
